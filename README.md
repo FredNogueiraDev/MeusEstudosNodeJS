@@ -228,10 +228,6 @@ A primeira coisa a se fazer é baixar o NPM, para conferir de já está baixado,
 
 ---
 
-[**Aplicativo super simples usando o node com algumas funções diferentes.**](https://www.notion.so/7620c40a41bb4dabbca167970b6fd755)
-
----
-
 ## Eventos
 
 Os eventos são funções do próprio core do NodeJS, então para usar este disparador de eventos, devemos usar `EventEmitter`, que seria uma função no estilo classe.
@@ -334,77 +330,8 @@ EJS é uma linguagem de modelagem para criação de páginas HTML usando JS.
     
     - ***partials***: contém seções de páginas que podem aparecer em diversas páginas, como o head, header e footer. Cada arquivo contém o código HTML condizente com sua função.
     - ***pages***: são arquivos HTML que representam as páginas, devem ser envolvidos com a estrutura HTML tradicional (`<!DOCTYPE html><html lang="pt-br"></html>`). Em seu interior, podem importar seções prontas do *partials* utilizando: `<%- include(<"partialName">); %>`.
-- **Exemplos**:
     
-    `<!-- Partial: footer.ejs -->
-    <footer>
-      <p>Feito com ❤ por Frederico Nogueira</p>
-    </footer>`
-    
-    `<!-- Page: index.ejs importando diversos partials (head, header e footer) -->
-    <!DOCTYPE html><html>
-      <%- include("../partials/head"); %>
-    
-      <body>
-        <%- include("../partials/header"); %>
-        <main>
-          <!-- Content -->
-        </main>
-        <%- include("../partials/footer"); %>
-      </body>
-    </html>`
-    
-    Ao realizar uma importação, é possível passar informações que poderão ser utilizadas dentro dos partials. Essas informações são passadas como objetos:
-    
-    `<!-- Partial: header.ejs utilizando informações recebidas da chamada (pageName) -->
-    <header>
-      <p>Página: <%- pageName %></p>
-    </header>`
-    
-    `<!-- Page: page.ejs importando diversos partials e passando informações para o header (pageName) -->
-    <!DOCTYPE html><html>
-    
-      <%- include("../partials/head"); %>
-    
-      <body>
-        <%- include("../partials/header", {pageName: "Minha Página"}); %>
-        <%- include("../partials/main"); %>
-        <%- include("../partials/footer"); %>
-      </body>
-    
-    </html>`
-    
-    Também é possível passar dados do backend (arquivo JS) para os templates EJS. A sintaxe é a mesma mostrada anteriormente para o *include* (passando um objeto):
-    
-    `// server.js
-    app.get("/", function (req, res) {
-    
-      const subtitle =
-        "EJS é uma linguagem de modelagem para criação de páginas HTML utilizando JavaScript";
-    
-      res.render("pages/index", {
-        subtitle: subtitle,
-      });
-    
-    });`
-    
-    No front, os valores são acessados envolvendo a variável com `<%= "varName" %>`:
-    
-    `// index.ejs
-    <p>Subtítulo: <%= subtitle %></p>`
-    
-    É possível fazer loops utilizando JS em meio ao HTML.
-    
-    `<ul>
-      <% items.forEach((item) => { %>
-    
-        <li><strong><%= item.title %></strong> <%= item.message%></li>
-    
-      <% }); %>
-    </ul>`
-    
-
----
+    ---
 
 ## API Rest
 
